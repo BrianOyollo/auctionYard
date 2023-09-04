@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block main-content %}
+    
+    {% if user.is_authenticated %}
+        <h6>{{ user.email }}</h6>
+    {% else %}
+        <h6>login</h6>
+    {% endif %}
+        
+{% endblock main-content %}
+    

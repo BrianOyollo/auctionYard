@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block main-content %}
+    
+    <div class="d-flex justify-content-center">
+        <div class="login-form border border-white bg-white rounded p-2 mt-5" style="width: 400px;">
+            <legend class="legend border-bottom text-center text-primary">Login</legend>
+            <form action="{% url 'account_login' %}" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary border-success bg-success-subtle text-success-emphasis w-100" type="submit">Login</button>
+            </form>
+            <div class="social-logins mt-2">
+                <small>
+                    <a href="{% provider_login_url 'google' %}">Login with Google</a> | <a href="#">Login with Twitter</a>
+                </small>
+            </div>
+        </div>
+    </div>
+    
+{% endblock main-content %}
