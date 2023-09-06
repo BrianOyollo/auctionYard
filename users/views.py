@@ -4,6 +4,7 @@ from .forms import UpdateUserForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 import logging
 
 logger = logging.getLogger(__name__)
@@ -12,6 +13,7 @@ logger = logging.getLogger(__name__)
 class TestPageView(TemplateView):
     template_name = 'homepage.html'
 
+@login_required()
 def user_profile_view(request):
     update_form = UpdateUserForm(instance=request.user)
     password_change_form = PasswordChangeForm(request.user)

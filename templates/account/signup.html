@@ -6,22 +6,22 @@
     
     <div class="d-flex justify-content-center">
         <div class="login-form border border-white bg-white rounded p-2 mt-3" style="width: 400px;">
-            <legend class="legend text-center text-primary">Signup</legend>
-            <form action="{% url 'account_signup' %}" method="post">
+            <legend class="legend text-center text-primary mb-4">Signup</legend>
+            <div class="d-flex justify-content-center mb-4">
+                <span>
+                    <a class="text-decoration-none rounded-circle bg-danger text-white p-2" href="{% provider_login_url 'google' %}">
+                        <i class="fa-brands fa-google fa-lg" style="margin-left: 3px;"></i>
+                    </a>  
+                    <a class="rounded-circle bg-primary text-white p-2" href="#" style="margin-left:6px">
+                        <i class="fa-brands fa-twitter fa-lg"></i>
+                    </a>
+                </span>
+            </div>
+            <form class="p-2" action="{% url 'account_signup' %}" method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <button class="btn btn-primary border-success bg-success-subtle text-success-emphasis w-100" type="submit">Signup</button>
             </form>
-            <div class="d-flex justify-content-center mt-2">
-                <span>
-                    <a class="text-decoration-none" href="{% provider_login_url 'google' %}">
-                        <i class="fa-brands fa-google fa-lg" style="color: #ff0000; margin-right: 20px;"></i>
-                    </a>  
-                    <a href="#">
-                        <i class="fa-brands fa-twitter fa-lg "></i>
-                    </a>
-                </span>
-            </div>
         </div>
     </div>
     
