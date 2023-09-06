@@ -1,12 +1,81 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block main-content %}
     
-    {% if user.is_authenticated %}
-        <h6>{{ user.email }}</h6>
-    {% else %}
-        <h6>login</h6>
-    {% endif %}
+<div class="d-flex flex-wrap  border-info flex-row" style="margin-top: 100px;">
+
+    <div class="item-section  border-danger" style="max-width: 80%;">
+        <div class="d-flex flex-wrap  flex-row">
+            <!-- card -->
+            <div class="card p-2 m-2" style="width: 17rem;">
+                <img src="{% static '/test-stuff/durango.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-img-overlay text-center">
+                    <div class="bid-and-time-left border-dark text-white">
+                        <span class="p-1">Bid: Ksh.20,000 </span>
+                        <span><i class="fa-regular fa-clock"></i> 2hrs 30mins</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>  
+            </div>
+            <!-- card -->
+            <div class="card p-2 m-2" style="width: 17rem;">
+                <img src="{% static '/test-stuff/durango.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-img-overlay text-center">
+                    <div class="bid-and-time-left border-dark text-white">
+                        <span class="p-1">Bid: Ksh.20,000 </span>
+                        <span><i class="fa-regular fa-clock"></i> 2hrs 30mins</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>  
+            </div>
+            <!-- card -->
+            <div class="card p-2 m-2" style="width: 17rem;">
+                <img src="{% static '/test-stuff/durango.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-img-overlay text-center">
+                    <div class="bid-and-time-left border-dark text-white">
+                        <span class="p-1">Bid: Ksh.20,000 </span>
+                        <span><i class="fa-regular fa-clock"></i> 2hrs 30mins</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>  
+            </div>
+            <!-- card -->
+            <div class="card p-2 m-2" style="width: 17rem;">
+                <img src="{% static '/test-stuff/durango.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-img-overlay text-center">
+                    <div class="bid-and-time-left border-dark text-white">
+                        <span class="p-1">Bid: Ksh.20,000 </span>
+                        <span><i class="fa-regular fa-clock"></i> 2hrs 30mins</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>  
+            </div>
+
+            
+
+        </div>
+    </div>
+
+    <div class="side-section p-2" style=" width: 20%;">
+        Flex item 2
+    </div>
+
+</div>
+
+  
         
 {% endblock main-content %}
     
