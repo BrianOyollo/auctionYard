@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # local 
     'users.apps.UsersConfig',
+    'items.apps.ItemsConfig',
 
     # allauth 
     'allauth',

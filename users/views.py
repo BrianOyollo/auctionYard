@@ -10,9 +10,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 # Create your views here.
-class TestPageView(TemplateView):
-    template_name = 'homepage.html'
-
 @login_required()
 def user_profile_view(request):
     update_form = UpdateUserForm(instance=request.user)
