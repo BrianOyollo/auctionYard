@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 user = get_user_model()
 
@@ -72,6 +73,7 @@ class Comment(models.Model):
     user = models.ForeignKey(user, on_delete=models.CASCADE, related_name='user')
     item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='comment_item')
     comment = models.TextField(verbose_name='Comment')
+    time = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
         verbose_name_plural = 'Comments'
