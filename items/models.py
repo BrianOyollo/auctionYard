@@ -50,8 +50,6 @@ class ItemStatus(models.Model):
         return self.status
 
 
-
-
 class Item(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
     title = models.CharField(max_length=150, blank=False, null=False, verbose_name='Title')
@@ -61,7 +59,7 @@ class Item(models.Model):
     item_status = models.ForeignKey(ItemStatus, on_delete=models.CASCADE, related_name='item_status')
     reserve_price = models.FloatField(blank = True, null=True, default=0)
     seller = models.ForeignKey(user, on_delete=models.CASCADE, related_name='seller')
-    date_posted = models.DateField(auto_now_add=True, verbose_name='Date Posted')
+    date_posted = models.DateTimeField(auto_now_add=True, verbose_name='Date Posted')
 
     class Meta:
         verbose_name_plural = 'Items'
