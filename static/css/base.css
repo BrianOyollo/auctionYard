@@ -14,3 +14,19 @@
     font-size: 13px;
   
 }
+
+.card-title{
+    font-weight:bold;
+    font-size: 14px;
+    padding: 10px 2px 2px 2px;
+    margin-top:3px;
+    margin-bottom: -2px;
+}
+.reserve-status{
+    margin: 0px 0px 10px 0px;
+    padding: 0px 1px 0px 1px;
+    font-size: 11px;
+    width: 80px;
+    border-radius: 3px;
+}
+

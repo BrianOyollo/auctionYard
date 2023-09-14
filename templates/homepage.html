@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block main-content %}
     
@@ -8,64 +9,32 @@
     <div class="item-section  border-danger" style="max-width: 80%;">
         <div class="d-flex flex-wrap  flex-row">
             <!-- card -->
-            <div class="card p-2 m-2" style="width: 17rem;">
-                <img src="{% static '/test-stuff/durango.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-img-overlay text-center">
-                    <div class="bid-and-time-left border-dark text-white">
-                        <span class="p-1">Bid: Ksh.20,000 </span>
-                        <span><i class="fa-regular fa-clock"></i> 2hrs 30mins</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>  
-            </div>
-            <!-- card -->
-            <div class="card p-2 m-2" style="width: 17rem;">
-                <img src="{% static '/test-stuff/durango.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-img-overlay text-center">
-                    <div class="bid-and-time-left border-dark text-white">
-                        <span class="p-1">Bid: Ksh.20,000 </span>
-                        <span><i class="fa-regular fa-clock"></i> 2hrs 30mins</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>  
-            </div>
-            <!-- card -->
-            <div class="card p-2 m-2" style="width: 17rem;">
-                <img src="{% static '/test-stuff/durango.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-img-overlay text-center">
-                    <div class="bid-and-time-left border-dark text-white">
-                        <span class="p-1">Bid: Ksh.20,000 </span>
-                        <span><i class="fa-regular fa-clock"></i> 2hrs 30mins</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>  
-            </div>
-            <!-- card -->
-            <div class="card p-2 m-2" style="width: 17rem;">
-                <img src="{% static '/test-stuff/durango.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-img-overlay text-center">
-                    <div class="bid-and-time-left border-dark text-white">
-                        <span class="p-1">Bid: Ksh.20,000 </span>
-                        <span><i class="fa-regular fa-clock"></i> 2hrs 30mins</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>  
-            </div>
-
             
-
+            {% for item in items  %}
+                <div class="card p-2 m-2" style="width: 17rem;">
+                    <img src="{% static '/test-stuff/tv.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-img-overlay text-center">
+                        <div class="bid-and-time-left border-dark text-white">
+                            <span class="p-1">Bid: {{ item.max_bid|intcomma }}</span>
+                            <span><i class="fa-regular fa-clock"></i> 2hrs 30mins</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.title }}</h5>            
+                        {% if item.reserve_status.status == 'Reserve' %}
+                            <button class="reserve-status bg-warning-subtle text-warning-emphasis border-warning border">{{item.reserve_status}}</button>
+                        {% elif item.reserve_status.status == 'No Reserve' %}
+                            <button class="reserve-status bg-primary-subtle text-primary-emphasis border-primary border">{{item.reserve_status}}</button>
+                        {% else %}
+                            <button class="reserve-status bg-secondary-subtle text-secondary-emphasis border-secondary border">{{item.reserve_status}}</button>
+                        {% endif %}
+                        <p class="card-text">{{ item.description }}</p>
+                        <p>{{ bids }}</p>
+                    </div>  
+                </div>
+            {% endfor %}
+                
+           
         </div>
     </div>
 

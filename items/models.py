@@ -18,8 +18,8 @@ class ItemCategory(models.Model):
         return self.category
     
 reserve_status = (
-    ('reserve', "Reserve"), 
-    ('no_reserve', 'NO Reserve')
+    ('Reserve', "Reserve"), 
+    ('No Reserve', 'No Reserve')
 )
 
 class ReserveStatus(models.Model):
@@ -35,8 +35,8 @@ class ReserveStatus(models.Model):
 
 
 item_status = (
-    ('available', 'Available'), 
-    ('sold', 'Sold'),
+    ('Available', 'Available'), 
+    ('Sold', 'Sold'),
 )
 
 class ItemStatus(models.Model):

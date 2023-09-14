@@ -1,9 +1,15 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from .models import Item
+from .models import Item, Bid, Comment
+from django.shortcuts import get_list_or_404
+from django.db.models import Max
 
 # Create your views here.
-class HomePageView(ListView):
-    model = Item
-    context_object_name = 'items'
-    template_name = 'homepage.html'
+def HomePageView(request):
+    items = Item.objects.annotate(max_bid = Max('bid_item__bid_amount')).order_by('-date_posted')
+
+    context = {
+        'items':items,
+    }
+
+    return render(request, 'homepage.html', context)
