@@ -68,6 +68,11 @@ class Item(models.Model):
     def __str__(self):
         return self.title
     
+class itemImages(models.Model):
+    id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='image_item')
+    image = models.ImageField(upload_to='item_images/')
+    
 class Comment(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
     user = models.ForeignKey(user, on_delete=models.CASCADE, related_name='user')
