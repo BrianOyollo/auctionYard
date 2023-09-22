@@ -20,7 +20,10 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ item.title }}</h5>            
+                        <a href="{% url 'item-details' item.id %}" class="stretched-link">
+                            <h5 class="card-title">{{ item.title }}</h5>
+                        </a>
+                        
                         {% if item.reserve_status.status == 'Reserve' %}
                             <button class="reserve-status bg-warning-subtle text-warning-emphasis border-warning border">{{item.reserve_status}}</button>
                         {% elif item.reserve_status.status == 'No Reserve' %}
@@ -29,7 +32,8 @@
                             <button class="reserve-status bg-secondary-subtle text-secondary-emphasis border-secondary border">{{item.reserve_status}}</button>
                         {% endif %}
                         <p class="card-text">{{ item.description }}</p>
-                        <p>{{ bids }}</p>
+                        <p>{{ bids }}</p> 
+                          
                     </div>  
                 </div>
             {% endfor %}
