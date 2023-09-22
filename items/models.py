@@ -59,6 +59,7 @@ class Item(models.Model):
     reserve_status = models.ForeignKey(ReserveStatus, on_delete=models.CASCADE, related_name='item_reserve_status')
     item_status = models.ForeignKey(ItemStatus, on_delete=models.CASCADE, related_name='item_status')
     reserve_price = models.FloatField(blank = True, null=True, default=0)
+    cover_photo = models.ImageField(upload_to='cover_photos/', default='no_picture.jpg')
     seller = models.ForeignKey(user, on_delete=models.CASCADE, related_name='seller')
     date_posted = models.DateTimeField(auto_now_add=True, verbose_name='Date Posted')
 
@@ -72,6 +73,12 @@ class itemImages(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='image_item')
     image = models.ImageField(upload_to='item_images/')
+
+    class Meta:
+        verbose_name_plural = 'Item Images'
+
+    def __str__(self):
+        return self.id
     
 class Comment(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)

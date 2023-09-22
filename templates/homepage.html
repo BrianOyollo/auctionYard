@@ -6,13 +6,13 @@
     
 <div class="d-flex flex-wrap  border-info flex-row" style="margin-top: 100px;">
 
-    <div class="item-section  border-danger" style="max-width: 80%;">
+    <div class="item-section  border-danger" style="width: 80%;">
         <div class="d-flex flex-wrap  flex-row">
             <!-- card -->
             
             {% for item in items  %}
                 <div class="card p-2 m-2" style="width: 17rem;">
-                    <img src="{% static '/test-stuff/tv.jpg' %}" class="card-img-top" alt="...">
+                    <img src="{{ item.cover_photo.url }}" width="250px" height="250px" class="card-img-top" alt="...">
                     <div class="card-img-overlay text-center">
                         <div class="bid-and-time-left border-dark text-white">
                             <span class="p-1">Bid: {{ item.max_bid|intcomma }}</span>
