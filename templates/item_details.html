@@ -5,17 +5,35 @@
 {% block main-content %}
     
 <h5>{{ item.title }}</h5>
-<div class="d-flex flex-wrap  border-info flex-row" style="margin-top: 100px;">
-    <div class="item-section  border-danger" style="width: 80%;">
-        ~
+<!-- item image section -->
+  <div class="d-flex flex-row mb-3">
+    <div class="p-1 border border-success" style="max-width:80%;">
+       <img src="{{ item.cover_photo.url}}" alt="{{ item.title }}" style="width: 750px; height: 500px;">
     </div>
-
-    <div class="side-section p-2" style=" width: 20%;">
-        Flex item 2
+    <div class="p-1 border border-danger">
+        <div class="d-flex flex-column">
+            <div class="mb-1">
+                <img src="{{ item.cover_photo.url}}" alt="{{ item.title }}" style="width: 210px; height: 150px;">
+            </div>
+            <div class="mb-1">
+                <img src="{{ item.cover_photo.url}}" alt="{{ item.title }}" style="width: 210px; height: 150px;">
+            </div>
+            <div class="mb-1">
+                <img src="{{ item.cover_photo.url}}" alt="{{ item.title }}" style="width: 210px; height: 150px;">
+            </div>
+            <a href="#">View all</a>
+          </div>
     </div>
+  </div>
 
-</div>
-
+  <!-- auction overview -->
+  <div class="d-flex flex-row mb-3">
+    <div class="p-2 border border-secondary" style="width: 200px; margin-right: 3px;">Time Left: </div>
+    <div class="p-2 border border-secondary" style="width: 200px; margin-right: 3px;">Highest Bid: </div>
+    <div class="p-2 border border-secondary" style="width: 200px; margin-right: 3px;">Bids: </div>
+    <div class="p-2 border border-secondary" style="width: 200px; margin-right: 3px;">Coments: </div>
+    <div class="p-2 border border-secondary" style="width: 200px; margin-right: 3px;">Ending Soon</div>
+  </div>
   
         
 {% endblock main-content %}

@@ -17,9 +17,11 @@ def HomePageView(request):
 
 def ItemDetailView(request, item_id):
     item = get_object_or_404(Item, id=item_id)
+    bids = Bid.objects.filter(item=item)
 
     context = {
-        'item':item
+        'item':item,
+        'bids':bids
     }
 
     return render(request, 'item_details.html', context)
