@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+{% block main-content %}
+    <h5>Sell Item(s)</h5>
+    <form class="form-control w-75" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            {{ form.errors }}
+        </div>
+        <div>
+            {{ form|crispy}}
+        </div>
+        <button class="btn btn-primary">Sell Item</button>
+    </form>
+        
+{% endblock main-content %}
+    

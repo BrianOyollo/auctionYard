@@ -7,10 +7,10 @@
 <h5>{{ item.title }}</h5>
 <!-- item image section -->
   <div class="d-flex flex-row mb-3">
-    <div class="p-1 border border-success" style="max-width:80%;">
+    <div class="p-1" style="max-width:80%;">
        <img src="{{ item.cover_photo.url}}" alt="{{ item.title }}" style="width: 750px; height: 500px;">
     </div>
-    <div class="p-1 border border-danger">
+    <div class="p-1">
         <div class="d-flex flex-column">
             <div class="mb-1">
                 <img src="{{ item.cover_photo.url}}" alt="{{ item.title }}" style="width: 210px; height: 150px;">
@@ -28,12 +28,45 @@
 
   <!-- auction overview -->
   <div class="d-flex flex-row mb-3">
-    <div class="p-2 border border-secondary" style="width: 200px; margin-right: 3px;">Time Left: </div>
-    <div class="p-2 border border-secondary" style="width: 200px; margin-right: 3px;">Highest Bid: </div>
-    <div class="p-2 border border-secondary" style="width: 200px; margin-right: 3px;">Bids: </div>
-    <div class="p-2 border border-secondary" style="width: 200px; margin-right: 3px;">Coments: </div>
-    <div class="p-2 border border-secondary" style="width: 200px; margin-right: 3px;">Ending Soon</div>
+    <!-- time left -->
+    <div class="" style="width: 200px; margin-right: 3px;">
+        Time Left: 4:45:45
+    </div>
+    <!-- highest bid -->
+    <div class="" style="width: 200px; margin-right: 3px;">
+        
+        {% if max_bid.max_bid_amount %}
+            <span>Highest Bid: {{ max_bid.max_bid_amount|intcomma}}</span>
+        {% else %}
+            Highest Bid: 0.00
+        {% endif %}
+            
+    </div>
+    <!-- number of bids -->
+    <div class="" style="width: 200px; margin-right: 3px;">
+        Bids: {{ bids.count}}
+    </div>
+    <!-- comments -->
+    <div class="" style="width: 200px; margin-right: 3px;">
+        Comments: 
+    </div>
+    <!-- place bid--> 
+    
+    
+    {% if user == item.seller %}
+        <div class="" style="width: 200px; margin-right: 3px;">
+           <span>something else</span>
+        </div>
+    {% else %}
+        <div class="" style="width: 200px; margin-right: 3px;">
+            <button class="btn btn-success w-100">Place Bid</button>
+        </div>
+    {% endif %}
+        
+         
+    
   </div>
+  
   
         
 {% endblock main-content %}
