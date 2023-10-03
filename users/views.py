@@ -7,8 +7,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 import logging
 
-logger = logging.getLogger(__name__)
-
 # Create your views here.
 @login_required()
 def user_profile_view(request):
@@ -35,7 +33,6 @@ def user_profile_view(request):
                 update_session_auth_hash(request, user)
                 messages.success(request, "Password changed successfully!")
             else:
-                logger.error("Password change form has errors: %s", password_change_form.errors)
                 messages.error(request, "Please correct the errors below!")
 
     else:

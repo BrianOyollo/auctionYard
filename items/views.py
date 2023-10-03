@@ -4,8 +4,9 @@ from .models import Item, Bid, Comment, ItemStatus
 from django.shortcuts import get_list_or_404
 from django.shortcuts import get_object_or_404
 from django.db.models import Max
-from .forms import AddItemForm
+from .forms import AddItemForm, AddItemImages
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def HomePageView(request):
@@ -30,23 +31,29 @@ def ItemDetailView(request, item_id):
 
     return render(request, 'item_details.html', context)
 
+@login_required
 def SellItemView(request):
     seller = request.user
     item_status = ItemStatus.objects.filter(status='Available').first()
 
     if request.method == 'POST':
         add_item_form = AddItemForm(request.POST, request.FILES)
+
         if add_item_form.is_valid():
             add_item = add_item_form.save(commit=False)
             add_item.seller = seller
             add_item.item_status = item_status
             add_item.save()
-            return redirect('homepage')
+
+            # get item_id
+            new_item_id = add_item.id
+            return redirect('item-details', new_item_id)
     else:
         add_item_form = AddItemForm(initial={'item_status':item_status})
+
     
     context = {
-        'form':add_item_form
+        'add_item_form':add_item_form,
     }
 
     return render(request, 'sell_item.html', context=context)

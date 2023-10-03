@@ -8,10 +8,7 @@
     <form class="form-control w-75" action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
-            {{ form.errors }}
-        </div>
-        <div>
-            {{ form|crispy}}
+            {{ add_item_form|crispy}}
         </div>
         <button class="btn btn-primary">Sell Item</button>
     </form>

@@ -6,13 +6,13 @@
     
 <div class="d-flex flex-wrap  border-info flex-row" style="margin-top: 100px;">
 
-    <div class="item-section  border-danger" style="width: 80%;">
+    <div class="item-section  border-danger" style="width: 85%;">
         <div class="d-flex flex-wrap  flex-row">
             <!-- card -->
             
             {% for item in items  %}
-                <div class="card p-2 m-2" style="width: 17rem;">
-                    <img src="{{ item.cover_photo.url }}" width="250px" height="250px" class="card-img-top" alt="...">
+                <div class="card p-2 m-2" style="width: 18rem;">
+                    <img src="{{ item.cover_photo.url }}" width="300px" height="200px" class="card-img-top" alt="...">
                     <div class="card-img-overlay text-center">
                         <div class="bid-and-time-left border-dark text-white">
                             <span class="p-1">Bid: {{ item.max_bid|intcomma }}</span>
@@ -20,10 +20,11 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        
                         <a href="{% url 'item-details' item.id %}" class="stretched-link">
                             <h5 class="card-title">{{ item.title }}</h5>
                         </a>
-                        
+
                         {% if item.reserve_status.status == 'Reserve' %}
                             <button class="reserve-status bg-warning-subtle text-warning-emphasis border-warning border">{{item.reserve_status}}</button>
                         {% elif item.reserve_status.status == 'No Reserve' %}
@@ -31,8 +32,6 @@
                         {% else %}
                             <button class="reserve-status bg-secondary-subtle text-secondary-emphasis border-secondary border">{{item.reserve_status}}</button>
                         {% endif %}
-                        <p class="card-text">{{ item.description }}</p>
-                        <p>{{ bids }}</p> 
                           
                     </div>  
                 </div>
@@ -42,7 +41,7 @@
         </div>
     </div>
 
-    <div class="side-section p-2" style=" width: 20%;">
+    <div class="side-section p-2" style=" width: 15%;">
         Flex item 2
     </div>
 

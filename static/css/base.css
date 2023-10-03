@@ -24,9 +24,9 @@
 }
 .reserve-status{
     margin: 0px 0px 10px 0px;
-    padding: 0px 1px 0px 1px;
-    font-size: 11px;
-    width: 80px;
-    border-radius: 3px;
+    padding: 0px 2px 0px 2px;
+    font-size: 10px;
+    /* width: 70px; */
+    border-radius: 5px;
 }
 
