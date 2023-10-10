@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load crispy_forms_tags %}
 
 {% block main-content %}
     
@@ -8,23 +9,32 @@
 <!-- item image section -->
   <div class="d-flex flex-row mb-3">
     <div class="p-1" style="max-width:80%;">
-       <img src="{{ item.cover_photo.url}}" alt="{{ item.title }}" style="width: 750px; height: 500px;">
+       <img class="img-fluid" src="{{ item.cover_photo.url}}" alt="{{ item.title }}">
     </div>
     <div class="p-1">
         <div class="d-flex flex-column">
-            <div class="mb-1">
-                <img src="{{ item.cover_photo.url}}" alt="{{ item.title }}" style="width: 210px; height: 150px;">
-            </div>
-            <div class="mb-1">
-                <img src="{{ item.cover_photo.url}}" alt="{{ item.title }}" style="width: 210px; height: 150px;">
-            </div>
-            <div class="mb-1">
-                <img src="{{ item.cover_photo.url}}" alt="{{ item.title }}" style="width: 210px; height: 150px;">
-            </div>
-            <a href="#">View all</a>
-          </div>
+
+            {% for item_image in item_images|slice:":3" %}
+                <div class="mb-1">
+                    <img src="{{ item_image.image.url}}" alt="{{ item.title }}" style="width: 210px; height: 150px;">
+                </div>
+            {% endfor %}
+                
+            
+            
+            <a href="#" class="" style="font-size: 11px;">View all</a>
+            
+            {% if user.is_authenticated %}
+                {% if user == item.seller %}
+                    <a href="#" class="" style="font-size: 11px;" data-bs-toggle="modal" data-bs-target="#addItemImages">Add more images</a>
+                {% endif %}
+            {% endif %}
+                
+            
+        </div>
     </div>
-  </div>
+</div>
+
 
   <!-- auction overview -->
   <div class="d-flex flex-row mb-3">
@@ -61,13 +71,42 @@
         <div class="" style="width: 200px; margin-right: 3px;">
             <button class="btn btn-success w-100">Place Bid</button>
         </div>
-    {% endif %}
-        
-         
+    {% endif %}    
     
   </div>
   
-  
+
+  <!-- Modals -->
+  <!-- add item images modal -->
+  <div class="modal fade" id="addItemImages" tabindex="-1" aria-labelledby="addItemImagesLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="addItemImagesLabel">Add More Images</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'add-item-images' item.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+                <input class="form-control" type="file" id="formFileMultiple" name="images" multiple>
+            </div>
+              
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+          </div>
+    </div>
+  </div>
+
         
 {% endblock main-content %}
     

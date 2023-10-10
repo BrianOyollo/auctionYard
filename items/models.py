@@ -79,7 +79,7 @@ class itemImages(models.Model):
         verbose_name_plural = 'Item Images'
 
     def __str__(self):
-        return self.id
+        return str(self.id)
     
 class Comment(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)

@@ -5,13 +5,30 @@
 
 {% block main-content %}
     <h5>Sell Item(s)</h5>
-    <form class="form-control w-75" action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div>
-            {{ add_item_form|crispy}}
-        </div>
-        <button class="btn btn-primary">Sell Item</button>
-    </form>
+    <div class="border border-secondary p-2">
+        <form class="mx-auto" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="p-2 mb-1 bg-white w-50">
+                <!-- {{ add_item_form|crispy}} -->
+                {{ add_item_form.item_category|as_crispy_field }}
+                {{ add_item_form.title|as_crispy_field }}
+                {{ add_item_form.description|as_crispy_field }}
+                
+                <div class="mb-3 form-check-inline">
+                    {{ add_item_form.reserve_status.label_tag }}
+                    {{ add_item_form.reserve_status }}
+                </div>
+                <div class="mb-3" id="reserve_price">
+                    {{ add_item_form.reserve_price.label_tag }}
+                    {{ add_item_form.reserve_price }}
+                </div>  
+                
+                {{ add_item_form.cover_photo|as_crispy_field }}
+                  
+            </div>
+            <button class="btn btn-primary">Sell Item</button>
+        </form>
+    </div>
         
 {% endblock main-content %}
     
